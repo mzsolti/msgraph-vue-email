@@ -30,7 +30,7 @@ const sendEmailButtonAction = (): void => {
       <div class="mt-8">
         <div class="grid grid-cols-1 gap-6">
           <label class="block">
-            <span class="text-gray-700">Sender name</span>
+            <span class="text-gray-700">To name</span>
             <input
               type="text"
               v-model="mail.sendTo.name"
@@ -39,7 +39,7 @@ const sendEmailButtonAction = (): void => {
             />
           </label>
           <label class="block">
-            <span class="text-gray-700">Sender Email address</span>
+            <span class="text-gray-700">To Email address</span>
             <input
               type="email"
               v-model="mail.sendTo.email"
