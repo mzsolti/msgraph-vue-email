@@ -6,9 +6,9 @@ Send email with vue and microsoft graph api
 
 ### Prerequisites
 
-To run the completed project in this folder, you need the following:
+To run the project in this folder, you need the following:
 
-- [Node.js](https://nodejs.org) installed on your development machine. If you do not have Node.js, visit the previous link for download options. (**Note:** This tutorial was written with Node version 12.18.2. The steps in this guide may work with other versions, but that has not been tested.)
+- [Node.js](https://nodejs.org) installed on your development machine. If you do not have Node.js, visit the previous link for download options. (**Note:** This tutorial was written with Node version 20.10.0. The steps in this guide may work with other versions, but that has not been tested.)
 - Either a personal Microsoft account with a mailbox on Outlook.com, or a Microsoft work or school account.
 
 ### Install node modules
@@ -27,4 +27,4 @@ npm run dev
 
 ```
 
-1. Open a browser and browse to `http://localhost:5173`.
+2. Open a browser and browse to `http://localhost:5173`.
