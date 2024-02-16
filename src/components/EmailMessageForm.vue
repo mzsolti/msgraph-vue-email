@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Mail from "../types/Mail";
-import { sendEmail } from "../services/email";
+import { sendEmail } from "../services/emailService";
 
 const props = defineProps<{ mail?: Mail }>();
 
@@ -17,14 +17,26 @@ const mail = ref<Mail>(
         isHtml: false,
       },
 );
+const mailSent = ref(false);
 const sendEmailButtonAction = (): void => {
-  sendEmail(mail.value);
+  sendEmail(mail.value)
+    .then((status) => {
+      mailSent.value = true;
+    })
+    .catch((error) => {});
 };
 </script>
 
 <template>
   <div class="card w-full md:w-1/2 m-auto">
-    <div class="p-2">
+    <div class="p-2" v-show="mailSent">
+      <div class="bg-green-400 text-green-100 border rounded">
+        Mail sent successfully
+      </div>
+      <button>New Email</button>
+      <button>Edit Last</button>
+    </div>
+    <div class="p-2" v-show="!mailSent">
       {{ mail }}
       <h2 class="text-2xl font-bold">Send Email</h2>
       <div class="mt-8">
