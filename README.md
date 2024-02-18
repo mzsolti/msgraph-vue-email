@@ -10,21 +10,31 @@ Send email with vue and microsoft graph api
 
 1. Go to https://portal.azure.com/
 2. Select Microsoft Extra Id
+
    ![A screenshot of the Microsoft Extra Id](/images/microsoft-extra-id.png)
+
 3. Select App Registrations
 4. Select New Registration
+
    ![A screenshot of the New Registration Button](/images/new-registration.png)
+
    Under Redirect URI, set the first drop-down to Single-page application (SPA) and set the value to http://localhost:5173 (or whenever hostname will run the app).
+
    ![A screenshot of the App Registration Page](/images/select-spa.png)
+
    Click Register
-   Write down Application (client) ID, will be used in .env as VITE_MSGRAPH_APP_ID
+
+5. Write down Application (client) ID, will be used in .env as VITE_MSGRAPH_APP_ID
    Write down Directory (tenant) ID, will be used in .env as VITE_MSGRAPH_TENANT_ID
-   Go to Api Permissions
+6. Go to Api Permissions
+
    ![A screenshot of the Api Permission Page](/images/api-permission.png)
+
    Add a permission
    Select Microsoft graph
    Select Delegated Permissions
    Select Mail.Send
+
    ![A screenshot of the Mail Send Permission Listed](/images/permission-mail-send.png)
 
 **To run the project you need the following:**
@@ -39,7 +49,7 @@ npm install
 
 ```
 
-### set up environment variables
+### Set up environment variables
 
 1. Copy the **.env.example** to **.env** and make the necessary changes to it, based on the instrunctions above.
 
