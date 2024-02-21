@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import Mail from "../types/Mail";
 import { sendEmail } from "../services/emailService";
+import EmailAttachments from "./EmailAttachments.vue";
 
 const props = defineProps<{ mail?: Mail }>();
 
@@ -11,15 +12,17 @@ const emptyEmailModel = {
   subject: "",
   body: "",
   isHtml: false,
+  attachments: [],
 };
 const mail = ref<Mail>(
   props.mail ? props.mail : JSON.parse(JSON.stringify(emptyEmailModel)),
 );
 const mailSent = ref(false);
 const sendingEmail = ref(false);
+const saveToSentItems = ref(false);
 const sendEmailButtonAction = (): void => {
   sendingEmail.value = true;
-  sendEmail(mail.value)
+  sendEmail(mail.value, saveToSentItems.value)
     .then((status) => {
       if (status.status == "ok") {
         mailSent.value = true;
@@ -127,6 +130,28 @@ const editLastEmail = (): void => {
               <option value="false">Text</option>
             </select>
           </label>
+          <div class="mt-6 space-y-6">
+            <div class="relative flex gap-x-3">
+              <div class="flex h-6 items-center">
+                <input
+                  id="saveToSentItems"
+                  name="saveToSentItems"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  v-model="saveToSentItems"
+                />
+              </div>
+              <div class="text-sm leading-6">
+                <label for="saveToSentItems" class="font-medium text-gray-900"
+                  >Save email to Sent Items</label
+                >
+                <p class="text-gray-500">
+                  Whether To save the email in the Sent Items folder.
+                </p>
+              </div>
+            </div>
+          </div>
+          <EmailAttachments v-model="mail.attachments" />
           <div class="block">
             <div class="mt-2">
               <div class="text-center">

@@ -4,4 +4,5 @@ export default interface Mail {
   subject: string;
   body: string;
   isHtml: boolean;
+  attachments: Array<{ name: string; blobData: string }>;
 }

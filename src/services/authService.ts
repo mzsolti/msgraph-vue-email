@@ -22,9 +22,6 @@ export const getClient = async (): Promise<Client> => {
   if (!authResult.account) {
     throw new Error("Could not authenticate");
   }
-  if (window.location.hash !== "") {
-    console.log(window.location.hash);
-  }
   const authProvider = new AuthCodeMSALBrowserAuthenticationProvider(pca, {
     account: authResult.account,
     interactionType: InteractionType.Popup,
